@@ -1,0 +1,19 @@
+body{
+    color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+    background-attachment: fixed;
+    flex-flow: column;
+}
+management{
+    color: brown;
+    font-size: medium;
+
+}
+hospital{
+    color: aqua;
+    column-span: unset;
+}
+patient{
+    color:blueviolet;
+    background-origin: padding-box;
+}

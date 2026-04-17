@@ -1,0 +1,176 @@
+/* ===== Full-page containers ===== */
+.full-page {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Dark overlay for readability */
+.overlay {
+  background: rgba(0, 0, 0, 0.45);
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Background Images ===== */
+
+/* Hospital - Login / Signup */
+.hospital-bg {
+  background-image: url("https://pplx-res.cloudinary.com/image/upload/pplx_search_images/d082678666245b716014e5089e7a39ef067ead42.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Doctor dashboard */
+.doctor-bg {
+  background-image: url("https://pplx-res.cloudinary.com/image/upload/pplx_search_images/3abf345f0feb069d47bc761215b1d67b77de489b.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Patient dashboard */
+.patient-bg {
+  background-image: url("https://pplx-res.cloudinary.com/image/upload/pplx_search_images/089606f78c2cb32bb067d31d515f5ae9cd8ef998.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* ===== Card + layout ===== */
+.auth-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.auth-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Center container for dashboards */
+.center-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.bg-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  border-radius: 18px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== Typography ===== */
+.main-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 1.5rem;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.form-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+/* ===== Inputs & Buttons ===== */
+.form-input {
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5f5;
+  width: 100%;
+  max-width: 100%;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.form-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.3);
+}
+
+.primary-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 9999px;
+  border: none;
+  outline: none;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, opacity 0.15s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(37, 99, 235, 0.5);
+  opacity: 0.95;
+}
+
+.switch-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.switch-btn {
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  border: 1px solid white;
+  background: rgba(15, 23, 42, 0.4);
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Slots */
+.slot-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(248, 250, 252, 0.9);
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75rem;
+}
+
+.form-row label {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+  color: #1f2937;
+}
+
+/* Spacing helpers */
+.mt-4 {
+  margin-top: 1rem;
+}

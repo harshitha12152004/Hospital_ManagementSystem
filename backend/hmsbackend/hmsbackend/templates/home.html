@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOSPITAL MANAGEMENT SYSTEM</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="{% static 'hmsbackend/css' %}">
+    </head>
+    <body>
+        <center>
+            <div class="management">
+               <div class="hospital">
+                   <h1>HOSPITAL MANAGEMENT SYSTEM</h1>
+                   <h2>DOCTOR</h2>
+                   <h2>PATIENT</h2>
+                   <h2>ADMIN</h2>
+               </div>
+               <div class="Doctor">
+                  
+                  <a href="http://127.0.0.1:8000/create-slot/">Doctor</a>
+                  <input type ="password" placeholder="Enter Here" value="password"/>
+                  <button type="submit" value="login">login</button>
+                </div>
+               <div class="Patient">
+        
+                  <a href="http://127.0.0.1:8000/get-slot/">Patient</a>
+                  <input type ="password" placeholder="Enter Here" value="password" />
+                  <button type="submit" value="login">login</button>
+               </div>
+               <div class="Admin">
+                  <a href="http://127.0.0.1:8000/admin/">Admin</a>
+                  <input type ="password" placeholder="Enter Here" value="password" />
+                  <button type="submit" value="login">login</button>
+                </div>
+            </div>
+        </center>
+    </body>
+</html>
+
+
+
+
+

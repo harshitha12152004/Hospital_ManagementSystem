@@ -1,0 +1,8 @@
+OUTPUT DEMO:
+
+Login Success
+Doctor created slot
+Patient viewed slot
+Patient booked slot
+Email sent
+Calendar event created
