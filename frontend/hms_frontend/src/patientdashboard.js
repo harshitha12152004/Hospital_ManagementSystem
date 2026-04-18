@@ -30,27 +30,27 @@ function PatientDashboard({ user }) {
 
     // Patient email
     emailjs.send(
-      //SERVICE_ID,
-      //TEMPLATE_ID,
+      SERVICE_ID,
+      TEMPLATE_ID,
       
       {
         ...params,
         to_email: patientEmail,
       },
-      //PUBLIC_KEY
+      PUBLIC_KEY
       
     );
 
     // Doctor email
     emailjs.send(
-      
-      "service_v7t7ucm",
-      "template_ezm80u6",
+      SERVICE_ID,
+      TEMPLATE_ID,
+     
       {
         ...params,
         to_email: doctorEmail,
       },
-      //PUBLIC_KEY
+      PUBLIC_KEY
       
     );
   };
