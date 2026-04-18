@@ -80,6 +80,5 @@ The event then appears in Google Calendar on the selected date and time.
 - The repository uses a `.gitignore` file to prevent committing sensitive files:
   - `.env`
   - `credentials.json`
-  - `node_modules/`
-  - `__pycache__/`
+  
 - Only source code is pushed to GitHub; secrets remain local.
