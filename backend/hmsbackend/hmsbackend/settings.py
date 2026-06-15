@@ -91,13 +91,8 @@ WSGI_APPLICATION = 'hmsbackend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hospital_db',        
-        'USER': 'hospital_user',      
-        'PASSWORD': 'strong_password',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',        
         
     }
 }
