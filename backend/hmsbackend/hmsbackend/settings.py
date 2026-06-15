@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'hmsbackend.accounts.apps.AccountsConfig',
-    'hmsbackend.bookings.apps.BookingsConfig',
+    'accounts',
+    'bookings',
     'hmsbackend'
 ]
 
