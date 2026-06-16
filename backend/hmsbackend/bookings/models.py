@@ -1,5 +1,5 @@
 from django.db import models
-from accounts.models import User
+from hmsbackend.accounts.models import User
 
 class AvailabilitySlot(models.Model):
     doctor = models.ForeignKey(User, on_delete=models.CASCADE)
