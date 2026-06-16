@@ -65,7 +65,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 AUTH_USER_MODEL = 'accounts.user'
 
-ROOT_URLCONF = 'hmsbackend.urls'
+ROOT_URLCONF = 'hmsbackend.hmsbackend.urls'
 
 TEMPLATES = [
     {
@@ -82,7 +82,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'hmsbackend.wsgi.application'
+WSGI_APPLICATION = 'hmsbackend.hmsbackend.wsgi.application'
 
 
 # Database
