@@ -63,7 +63,7 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-AUTH_USER_MODEL = 'hmsbackend.accounts.user'
+AUTH_USER_MODEL = 'accounts.user'
 
 ROOT_URLCONF = 'hmsbackend.hmsbackend.urls'
 
