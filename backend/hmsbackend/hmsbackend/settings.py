@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'hmsbackend.accounts.apps.AccountsConfig',
     'hmsbackend.bookings.apps.BookingsConfig',
-    'hmsbackend'
+    
 ]
 
 MIDDLEWARE = [
