@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY
 SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-key-for-local-only')
-DEBUG = True
+DEBUG = False 
 
 ALLOWED_HOSTS = []
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
@@ -61,7 +61,7 @@ MIDDLEWARE = [
     
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
 
 
 ALLOWED_HOSTS = ['hms-backend-xyz.onrender.com']  # exact backend domain
