@@ -21,6 +21,7 @@ from hmsbackend.bookings.views import create_slot, get_slots, book_slot
 from . import views
 
 urlpatterns = [
+   path('', views.home),
    path('admin/', admin.site.urls),
    path('signup/', signup),
    path('login/', login),
