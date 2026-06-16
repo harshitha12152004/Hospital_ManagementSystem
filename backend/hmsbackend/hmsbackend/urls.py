@@ -16,8 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from accounts.views import signup, login
-from bookings.views import create_slot, get_slots, book_slot
+from hmsbackend.accounts.views import signup, login
+from hmsbackend.bookings.views import create_slot, get_slots, book_slot
 from . import views
 
 urlpatterns = [
