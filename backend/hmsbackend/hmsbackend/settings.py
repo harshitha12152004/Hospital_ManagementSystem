@@ -64,10 +64,10 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = False
 
 
-ALLOWED_HOSTS = ['hms-backend-xyz.onrender.com']  # exact backend domain
+ALLOWED_HOSTS = ['https://hospital-managementsystem.onrender.com']  # exact backend domain
 
 CORS_ALLOWED_ORIGINS = [
-    "https://hms-frontend-abc.onrender.com"  # exact frontend domain
+    "https://hospital-managementsystem-1.onrender.com"  # exact frontend domain
 ]
 
 AUTH_USER_MODEL = 'accounts.user'
