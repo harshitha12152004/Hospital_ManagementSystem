@@ -118,3 +118,14 @@ Located in `/database/schema.sql`. Key tables:
 - `bookings` - Links patient + doctor + slot
 
 Includes RLS policies for Supabase.
+## 📸 Screenshots
+
+### Patient Login & Dashboard
+![Patient Login](./output/Screenshot 2026-04-14 181515.png)
+(./outputs/Screenshot 2026-04-14 181530.png)
+
+*Patient login aur available slots dashboard*
+
+### Google Calendar Auto-Event
+![Calendar Event](./outputs/Screenshot 2026-04-17 210227.png)
+*Booking ke baad automatically created Google Calendar event*
