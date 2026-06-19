@@ -2,7 +2,7 @@ HMS Frontend - React Patient & Doctor Dashboard
 
 React.js frontend for Hospital Management System. Handles user auth, slot booking, and role-based dashboards.
 
-**Live Demo**: https://hms-frontend-xyz.onrender.com
+**Live Demo**: https://hospital-managementsystem-1.onrender.com
 
 ✨ Features
 
