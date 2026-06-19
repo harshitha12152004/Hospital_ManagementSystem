@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+HMS Frontend - React Patient & Doctor Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React.js frontend for Hospital Management System. Handles user auth, slot booking, and role-based dashboards.
 
-## Available Scripts
+**Live Demo**: https://hms-frontend-xyz.onrender.com
 
-In the project directory, you can run:
+✨ Features
 
-### `npm start`
+- **Patient Dashboard**: View available doctor slots, book appointments in 1 click
+- **Doctor Dashboard**: Manage availability, view upcoming patient bookings
+- **JWT Auth**: Login/Register with token storage + protected routes
+- **Real-time Updates**: Fetches slots from `GET /get-slot/` and updates UI after booking
+- **Responsive UI**: Mobile-friendly design using CSS3 + Bootstrap
+- **Error Handling**: Loading states for Render cold starts, CORS error fallbacks
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+🛠️ Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+React.js, JavaScript ES6+, Axios, React Router, CSS3, HTML5, Render
 
-### `npm test`
+🚀 Live Links
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+|  | URL |
+| --- | --- |
+| **Frontend** | https://hospital-managementsystem-1.onrender.com|
+| **Backend API** | https://hospital-managementsystem.onrender.com |
 
-### `npm run build`
+**Demo Login**  
+Patient: `patient@test.com` / `Test123!`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+📂 Project Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+frontend/hms_frontend/
+├── public/
+│   └── http://index.html
+├── src/
+│   ├── components/
+│   │   ├── Auth/           # Login, Register forms
+│   │   ├── Dashboard/      # Patient & Doctor dashboards
+│   │   ├── Slots/          # SlotList, BookingButton
+│   │   └── Common/         # Navbar, Loader
+│   ├── services/
+│   │   └── http://api.js          # Axios instance + API calls
+│   ├── http://App.js
+│   └── http://index.js
+├── .env.example
+└── http://package.json
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+🔧 Run Locally
 
-### `npm run eject`
+```bash
+cd frontend/hms_frontend
+npm install
+npm start
+App runs at `http://localhost:3000`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+📡 Key API Calls
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+All requests handled via `src/services/api.js` using Axios:
+Action	Endpoint	Method
+Login	`/api/login/`	`POST`
+Get Slots	`/api/get-slot/`	`GET`
+Book Slot	`/api/book-slot/`	`POST`
+Get My Bookings	`/api/bookings/`	`GET`
+JWT token stored in `localStorage` and sent as `Authorization: Bearer <token>`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+🎨 Main Components
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. *Login.js* - Handles auth, stores JWT, redirects by role
+2. *PatientDashboard.js* - Calls `GET /get-slot/`, renders slot cards
+3. *SlotCard.js* - Displays date/time, `Book` button triggers `POST /book-slot/`
+4. *DoctorDashboard.js* - Shows doctor's bookings + create slot form
 
-## Learn More
+🚀 Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Deployed on Render as Static Site  
+*Build Command*: `npm run build`  
+*Publish Directory*: `build`  
