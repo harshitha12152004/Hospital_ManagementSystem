@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_simplejwt',
     'corsheaders',
     'hmsbackend.accounts.apps.AccountsConfig',
     'hmsbackend.bookings.apps.BookingsConfig',
@@ -61,10 +62,16 @@ MIDDLEWARE = [
     
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
 CORS_ALLOW_ALL_ORIGINS = False
 
 
-ALLOWED_HOSTS = ['https://hospital-managementsystem.onrender.com']  # exact backend domain
+ALLOWED_HOSTS = ['hospital-managementsystem.onrender.com', 'localhost', '127.0.0.1']
 
 CORS_ALLOWED_ORIGINS = [
     "https://hospital-managementsystem-1.onrender.com"  # exact frontend domain
