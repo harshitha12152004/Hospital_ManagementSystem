@@ -2,7 +2,7 @@
 
 REST API for Hospital Management System handling authentication, appointments, and Google Calendar integration.
 
-**Base URL**: https://hms-backend-xyz.onrender.com
+**Base URL**: https://hospital-managementsystem.onrender.com
 
 🔑 Key Features
 - JWT Authentication for Patient, Doctor, Admin roles
@@ -24,17 +24,6 @@ Python, Django 4.x, Django REST Framework, PostgreSQL, Gunicorn, Render
 | `POST` | `/api/book-slot/` | Book a slot: `{slot_id, patient_id}` | JWT |
 | `GET` | `/api/bookings/` | Get bookings for logged-in user | JWT |
 | `POST` | `/api/create-slot/` | Doctor creates availability | JWT Doctor |
-
-⚙️ Environment Variables
-
-Create `.env` in `/backend/`:
-SECRET_KEY=django-insecure-your-secret-key
-DEBUG=False
-DATABASE_URL=postgresql://user:pass@host:5432/dbname
-EMAIL_HOST=smtp.gmail.com
-EMAIL_HOST_USER=your_email@gmail.com
-EMAIL_HOST_PASSWORD=your_app_password
-GOOGLE_CALENDAR_ID=abc123@group.calendar.google.com
 
 🔧 Setup & Run Locally
 
