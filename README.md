@@ -1,84 +1,120 @@
-## How It Works
+Hospital Management System
 
-### Overview
+[![Live Demo](https://img.shields.io/badge/Live-Demo-green?style=for-the-badge)](https://hospital-managementsystem-1.onrender.com)
+[![Backend API](https://img.shields.io/badge/API-Render-blue?style=for-the-badge)](https://hospital-managementsystem.onrender.com)
+[![GitHub](https://img.shields.io/badge/GitHub-Repo-black?style=for-the-badge&logo=github)](https://github.com/harshitha12152004/Hospital_ManagementSystem)
 
-This project is a Hospital Management System with:
-- **Backend:** Django REST Framework (`hms-back`)
-- **Frontend:** React (`front/hmsfront`)
-- **Integrations:** Email notifications and Google Calendar events
+Full-stack hospital portal for patients to book doctor appointments with automated Google Calendar events and email confirmations.
 
-Patients can view available appointment slots and book a consultation with a doctor.  
-When a booking is made, the system sends emails and creates a Google Calendar event.
+✨ Features
 
----
+- **Patient Dashboard**: View real-time available slots, book appointments instantly
+- **Doctor Dashboard**: Manage availability, view upcoming bookings  
+- **Google Calendar Integration**: Auto-creates calendar events using Service Account on booking
+- **Email Notifications**: Confirmation to patient + alert to doctor via Django `send_mail`
+- **Role-Based Access**: Separate auth flows for Patient, Doctor, Admin using JWT
+- **Secure Deployment**: `.env` and `credentials.json` excluded via `.gitignore`
 
-### Booking Flow
+🛠️ Tech Stack
 
-#### 1. Frontend (React)
+**Frontend**: React.js, JavaScript, Axios, CSS3, HTML5  
+**Backend**: Django REST Framework, Python  
+**Database**: PostgreSQL  
+**Integrations**: Google Calendar API, SMTP Email  
+**Deployment**: Render  
 
-- The **Patient Dashboard** calls `GET /get-slot/` to fetch all available slots.
-- Slots are displayed with date and time.
-- When the user clicks **“Book”**:
-  - The frontend sends a `POST /book-slot/` request with:
-    - `slot_id`
-    - `patient_id`
-  - On success, the frontend shows a confirmation message to the user.
+🚀 Live Demo
 
-#### 2. Backend (Django REST)
+|  | URL |
+| --- | --- |
+| **Frontend** | https://hospital-managementsystem-1.onrender.com |
+| **Backend API** | https://hospital-managementsystem.onrender.com |
 
-The `book_slot` view handles the booking:
+**Test Credentials**  
+Patient Login: `patient@test.com` / `Test123!`
 
-1. Fetches the requested `AvailabilitySlot`.
-2. Checks if the slot is already booked.
-3. Gets the `patient` and `doctor`.
-4. Creates a `Booking` record linking patient, doctor, and slot.
-5. Marks the slot as `is_booked = True` and saves it.
-6. Sends emails:
-   - Confirmation email to the patient.
-   - Notification email to the doctor.
-7. Calls `create_event(slot, patient, doctor)` to add the appointment to Google Calendar.
+📸 Demo Flow
 
-The response `{"msg": "Booked successfully"}` is returned to the frontend.
+1. Login as patient → Dashboard shows available slots from `GET /get-slot/`
+2. Click **Book** → `POST /book-slot/` creates booking 
+3. Check email for confirmation + Google Calendar for auto-created event
 
----
+📂 Project Structure
 
-### Google Calendar Integration
+Hospital_ManagementSystem/
+├── backend/                    # Django REST Framework
+│   ├── hms_api/               # Main app: views, models, serializers
+│   ├── google_calendar.py     # Service Account calendar integration
+│   ├── http://requirements.txt
+│   └── http://manage.py
+├── frontend/hms_frontend/      # React patient/doctor dashboard
+│   ├── src/components/
+│   └── http://package.json
+├── database/
+│   └── http://schema.sql             # Full Supabase/PostgreSQL schema + RLS
+└── .gitignore                 # Excludes .env, http://credentials.json
 
-- Implemented in `google_calendar.py`.
-- Uses a **Google Service Account** and a `credentials.json` key file.
-- Uses the Google Calendar API with the scope:
-  - `https://www.googleapis.com/auth/calendar`
-- The calendar to use is configured via `CALENDAR_ID`
-  (a Google Calendar ID like `...@group.calendar.google.com`).
+🔧 Run Locally
 
-When `create_event(slot, patient, doctor)` is called:
+**1. Backend Setup**
+```bash
+cd backend
+pip install -r requirements.txt
+Create `.env` file:
+SECRET_KEY=your_django_secret
+DATABASE_URL=postgresql://user:pass@localhost:5432/hms
+EMAIL_HOST_USER=your_email@gmail.com
+EMAIL_HOST_PASSWORD=your_app_password
+GOOGLE_CALENDAR_ID=your_calendar_id@group.calendar.google.com
+Add `credentials.json` for Google Service Account to `/backend/`
+python manage.py migrate
+python manage.py runserver
+*2. Frontend Setup*
+cd frontend/hms_frontend
+npm install
+Create `.env` file:
+REACT_APP_API_URL=http://localhost:8000
+npm start
+⚙️ How It Works
 
-1. Loads credentials from `credentials.json`.
-2. Builds a Calendar API client.
-3. Combines `slot.date` and `slot.start_time` / `slot.end_time` into `dateTime`.
-4. Creates an event with:
-   - Summary: `Appointment: <patient> with Dr <doctor>`
-   - Description: `Hospital Management Appointment`
-   - Start and end time in `Asia/Kolkata` timezone.
-5. Inserts the event into the configured Google Calendar.
+Booking Flow
+1. *Frontend React*: Patient Dashboard calls `GET /get-slot/` to fetch available slots
+2. *User Action*: Patient clicks "Book" → Frontend sends `POST /book-slot/` with `slot_id` + `patient_id`
+3. *Backend Django*: 
+   - Validates slot is not booked
+   - Creates `Booking` record linking patient, doctor, slot
+   - Marks slot `is_booked = True`
+   - Sends confirmation email to patient + notification to doctor
+   - Calls `create_event()` to add appointment to Google Calendar
+4. *Response*: `{"msg": "Booked successfully"}` returned to frontend
 
-The event then appears in Google Calendar on the selected date and time.
+Google Calendar Integration
+- Uses Google Service Account + `credentials.json` key file
+- Scope: `https://www.googleapis.com/auth/calendar`
+- Calendar ID configured via `CALENDAR_ID` env var
+- Event created with: Summary, description, start/end time in `Asia/Kolkata` timezone
 
----
+Email Notifications  
+Django `send_mail` sends:
+- *To Patient*: Appointment confirmation with doctor, date, time
+- *To Doctor*: New booking alert with patient details
 
-### Email Notifications
+🔒 Security
 
-- Backend uses Django’s `send_mail` to send:
-  - Appointment confirmation to the patient.
-  - New booking notification to the doctor.
-- Email content includes patient name, doctor name, date, and time of the appointment.
+Repository uses `.gitignore` to prevent committing sensitive files:
+.env
+credentials.json
+*.sqlite3
+node_modules/
+Only source code is pushed to GitHub. All secrets remain local or in Render environment variables.
 
----
+📊 Database Schema
 
-### Git / Security
+Located in `/database/schema.sql`. Key tables:
+- `profiles` - Users with role: subscriber/admin
+- `subscriptions` - Monthly/Yearly plans with Stripe IDs
+- `scores` - Rolling 5 golf scores per user
+- `availability_slots` - Doctor schedule
+- `bookings` - Links patient + doctor + slot
 
-- The repository uses a `.gitignore` file to prevent committing sensitive files:
-  - `.env`
-  - `credentials.json`
-  
-- Only source code is pushed to GitHub; secrets remain local.
+Includes RLS policies for Supabase.
