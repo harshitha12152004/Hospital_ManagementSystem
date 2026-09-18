@@ -73,7 +73,7 @@ CORS_ALLOWED_ORIGINS = [
 
 AUTH_USER_MODEL = 'accounts.user'
 
-ROOT_URLCONF = 'hmsbackend.hmsbackend.urls'
+ROOT_URLCONF = 'hmsbackend.urls'
 
 TEMPLATES = [
     {
