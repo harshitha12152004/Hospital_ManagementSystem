@@ -30,31 +30,44 @@ function PatientDashboard({ user }) {
 
     // Patient email
     emailjs.send(
+<<<<<<< HEAD
       //SERVICE_ID,
       //TEMPLATE_ID,
       "service_v7t7ucm",
       "template_ezm80u6",
+=======
+      SERVICE_ID,
+      TEMPLATE_ID,
+>>>>>>> 768e93b061a9ac84c289b9061ea159e67ee1773c
       
       {
         ...params,
         to_email: patientEmail,
       },
+<<<<<<< HEAD
       //PUBLIC_KEY
       "6fm2Adly_yGeZuL2M"
+=======
+      PUBLIC_KEY
+>>>>>>> 768e93b061a9ac84c289b9061ea159e67ee1773c
       
     );
 
     // Doctor email
     emailjs.send(
-      
-      "service_v7t7ucm",
-      "template_ezm80u6",
+      SERVICE_ID,
+      TEMPLATE_ID,
+     
       {
         ...params,
         to_email: doctorEmail,
       },
+<<<<<<< HEAD
       //PUBLIC_KEY
       "6fm2Adly_yGeZuL2M"
+=======
+      PUBLIC_KEY
+>>>>>>> 768e93b061a9ac84c289b9061ea159e67ee1773c
       
     );
   };

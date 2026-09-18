@@ -2,7 +2,7 @@ from django.db import transaction
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import AvailabilitySlot, Booking
-from accounts.models import User
+from hmsbackend.accounts.models import User
 from django.core.mail import send_mail
 from .google_calendar import create_event
 
