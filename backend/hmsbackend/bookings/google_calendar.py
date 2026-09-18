@@ -23,7 +23,7 @@ def create_event(slot, patient, doctor):
     }
 
     event_result = service.events().insert(
-        calendarId='PRIMARY_ID',
+        calendarId='harshithagangishettyharshitha@gmail.com',
         body=event
     ).execute()
 
