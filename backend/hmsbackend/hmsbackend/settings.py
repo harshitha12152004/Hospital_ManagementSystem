@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
-    'hmsbackend.accounts.apps.AccountsConfig',
-    'hmsbackend.bookings.apps.BookingsConfig',
+    'accounts.apps.AccountsConfig',
+    'bookings.apps.BookingsConfig',
 ]
 
 MIDDLEWARE = [
