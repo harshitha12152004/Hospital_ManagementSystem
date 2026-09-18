@@ -18,9 +18,9 @@ function PatientDashboard({ user }) {
   };
 
   // 🔹 EMAIL FUNCTION
-  const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-  const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-  const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+  //const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+  //const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+  //const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
   const sendEmails = (slot, patientEmail, doctorEmail) => {
     const params = {
@@ -32,12 +32,15 @@ function PatientDashboard({ user }) {
     emailjs.send(
       //SERVICE_ID,
       //TEMPLATE_ID,
+      "service_v7t7ucm",
+      "template_ezm80u6",
       
       {
         ...params,
         to_email: patientEmail,
       },
       //PUBLIC_KEY
+      "6fm2Adly_yGeZuL2M"
       
     );
 
@@ -51,6 +54,7 @@ function PatientDashboard({ user }) {
         to_email: doctorEmail,
       },
       //PUBLIC_KEY
+      "6fm2Adly_yGeZuL2M"
       
     );
   };
