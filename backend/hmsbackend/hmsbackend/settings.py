@@ -90,7 +90,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'hmsbackend.hmsbackend.wsgi.application'
+WSGI_APPLICATION = 'hmsbackend.wsgi.application'
 
 
 # Database
