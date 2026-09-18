@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import API from "./api";
 import emailjs from "emailjs-com";
 
+const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
 function PatientDashboard({ user }) {
-
   const [slots, setSlots] = useState([]);
 
-  // 🔹 FETCH SLOTS
   const getSlots = async () => {
     try {
       const res = await API.get("get-slot/");
@@ -17,68 +18,31 @@ function PatientDashboard({ user }) {
     }
   };
 
-  // 🔹 EMAIL FUNCTION
-  //const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-  //const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-  //const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
-
   const sendEmails = (slot, patientEmail, doctorEmail) => {
     const params = {
       date: slot.date,
       time: slot.start_time,
     };
 
-    // Patient email
     emailjs.send(
-<<<<<<< HEAD
-      //SERVICE_ID,
-      //TEMPLATE_ID,
-      "service_v7t7ucm",
-      "template_ezm80u6",
-=======
       SERVICE_ID,
       TEMPLATE_ID,
->>>>>>> 768e93b061a9ac84c289b9061ea159e67ee1773c
-      
-      {
-        ...params,
-        to_email: patientEmail,
-      },
-<<<<<<< HEAD
-      //PUBLIC_KEY
-      "6fm2Adly_yGeZuL2M"
-=======
+      { ...params, to_email: patientEmail },
       PUBLIC_KEY
->>>>>>> 768e93b061a9ac84c289b9061ea159e67ee1773c
-      
     );
 
-    // Doctor email
     emailjs.send(
       SERVICE_ID,
       TEMPLATE_ID,
-     
-      {
-        ...params,
-        to_email: doctorEmail,
-      },
-<<<<<<< HEAD
-      //PUBLIC_KEY
-      "6fm2Adly_yGeZuL2M"
-=======
+      { ...params, to_email: doctorEmail },
       PUBLIC_KEY
->>>>>>> 768e93b061a9ac84c289b9061ea159e67ee1773c
-      
     );
   };
+
   useEffect(() => {
     getSlots();
-}, []);
-  
+  }, []);
 
- 
-
-  // 🔹 BOOK SLOT
   async function bookSlot(slot) {
     try {
       await API.post("book-slot/", {
@@ -86,19 +50,9 @@ function PatientDashboard({ user }) {
         patient_id: user.user_id,
       });
 
-
-      sendEmails(
-        slot,
-        user.email,
-        "doctor@gmail.com"
-      );
-
-
-      //addToCalendar(slot);
+      sendEmails(slot, user.email, "doctor@gmail.com");
       alert("Booked + Email + Calendar Added");
-
       getSlots();
-
     } catch (err) {
       console.error(err);
       alert("Error booking");
@@ -118,10 +72,7 @@ function PatientDashboard({ user }) {
               <p>
                 {slot.date} | {slot.start_time}
               </p>
-              <button
-                className="primary-btn"
-                onClick={() => bookSlot(slot)}
-              >
+              <button className="primary-btn" onClick={() => bookSlot(slot)}>
                 Book
               </button>
             </div>
