@@ -9,9 +9,8 @@ def signup(request):
     username = request.data.get('username')
     password = request.data.get('password')
     role = request.data.get('role')
-    email = request.data.get('email') or ""  # default to empty string if not sent
+    email = request.data.get('email')  # can be None
 
-    # Basic validation
     if not username or not password or not role:
         return Response(
             {"error": "username, password and role are required"},
@@ -25,11 +24,11 @@ def signup(request):
             status=400
         )
 
-    # Create user
+    # Create user; email can be None/empty now
     user = User.objects.create_user(
         username=username,
         password=password,
-        email=email
+        email=email or ""
     )
     user.role = role
     user.save()
