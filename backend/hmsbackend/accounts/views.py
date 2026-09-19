@@ -9,7 +9,6 @@ def signup(request):
     username = request.data.get('username')
     password = request.data.get('password')
     role = request.data.get('role')
-    email = request.data.get('email')  # can be None
 
     if not username or not password or not role:
         return Response(
@@ -18,17 +17,19 @@ def signup(request):
         )
 
     role = role.lower()
-    if role not in ["doctor", "patient", "admin"]:
+    if role not in ["doctor", "patient"]:
         return Response(
             {"error": "Invalid role"},
             status=400
         )
 
-    # Create user; email can be None/empty now
+    # Create user with a dummy email to satisfy the model
+    email = f"{username}@example.com"
+
     user = User.objects.create_user(
         username=username,
         password=password,
-        email=email or ""
+        email=email
     )
     user.role = role
     user.save()
