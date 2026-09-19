@@ -3,19 +3,35 @@ from rest_framework.response import Response
 from django.contrib.auth import authenticate
 from .models import User
 
+
 @api_view(['POST'])
 def signup(request):
     username = request.data.get('username')
     password = request.data.get('password')
     role = request.data.get('role')
-    email = request.data.get('email')
+    email = request.data.get('email') or ""  # default to empty string if not sent
 
+    # Basic validation
+    if not username or not password or not role:
+        return Response(
+            {"error": "username, password and role are required"},
+            status=400
+        )
+
+    role = role.lower()
+    if role not in ["doctor", "patient", "admin"]:
+        return Response(
+            {"error": "Invalid role"},
+            status=400
+        )
+
+    # Create user
     user = User.objects.create_user(
         username=username,
         password=password,
         email=email
     )
-    user.role = role.lower()
+    user.role = role
     user.save()
 
     return Response({"msg": "User created"})
@@ -26,6 +42,12 @@ def login(request):
     username = request.data.get('username')
     password = request.data.get('password')
 
+    if not username or not password:
+        return Response(
+            {"error": "username and password are required"},
+            status=400
+        )
+
     user = authenticate(username=username, password=password)
 
     if user:
@@ -35,4 +57,7 @@ def login(request):
             "email": user.email
         })
 
-    return Response({"error": "Invalid credentials"}, status=400)
+    return Response(
+        {"error": "Invalid credentials"},
+        status=400
+    )
